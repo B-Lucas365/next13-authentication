@@ -10,6 +10,7 @@ interface InputProps {
     onChange(event: React.ChangeEvent<HTMLInputElement>): void, 
     error: string, 
     placeholder: string
+    
 }
 
 export const Input = ({label, type, name, value, onChange, error, placeholder}: InputProps) => {
@@ -21,7 +22,7 @@ export const Input = ({label, type, name, value, onChange, error, placeholder}: 
             name={name}
             value={value}
             onChange={onChange}
-            placeholder={placeholder}      
+            placeholder={placeholder}   
             />
             {error && <p>{error}</p>}
         </InputContainer>

@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import StyledComponentsRegistry from "../../lib/styled-components/registry";
 import { GlobalStyles } from "../../styles/global";
@@ -11,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 interface ChildrenProps {
   children: React.ReactNode;
 }
+
 export const LayoutProvider = ({ children }: ChildrenProps) => {
   const pathname = usePathname();
   const isPublicPage = pathname === "/login" || pathname === "/register";

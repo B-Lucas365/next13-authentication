@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Input } from "../../components/Input";
 import { Button, Container, Form } from "./styles";
+import Link from "next/link";
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -9,6 +10,11 @@ export default function Register() {
     password: "",
     email: "",
   });
+
+
+  const onRegister = async () => {
+    console.log(user)
+  }
 
   return (
     <Container>
@@ -43,9 +49,14 @@ export default function Register() {
           onChange={(e) => setUser({ ...user, password: e.target.value })}
           error=""
           placeholder="Enter your password"
+          
         />
         
-        <Button type="submit">Register</Button>
+        <Button onClick={onRegister}>Register</Button>
+
+        <Link href={"/login"}>
+          Alredy have an account? Login
+        </Link>
       </Form>
     </Container>
   );
