@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Input } from "../../components/Input";
 import { Button, Container, Form } from "./styles";
 import Link from "next/link";
+import axios from "axios";
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -13,7 +14,12 @@ export default function Register() {
 
 
   const onRegister = async () => {
-    console.log(user)
+    try {
+      const response = await axios.post("/api/users/register", user)
+      alert(response.data.message)
+    } catch(error: any) {
+      alert(error.response.data.message)
+    }
   }
 
   return (

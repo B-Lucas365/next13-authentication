@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.4",
     "@types/styled-components": "^5.1.28",
+    "axios": "^1.5.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.3",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
