@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.4",
+    "@types/jsonwebtoken": "^9.0.3",
+    "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.28",
     "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
@@ -18,6 +20,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.11.0",
     "styled-components": "^6.0.8"
   },
   "devDependencies": {

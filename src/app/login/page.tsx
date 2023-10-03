@@ -3,8 +3,15 @@ import { useState } from "react";
 import { Input } from "../../components/Input";
 import { Button, Container, Form } from "./styles";
 import Link from "next/link";
+import axios from "axios";
+import {useRouter} from 'next/navigation'
+import {toast} from 'react-hot-toast'
+import { Spinner } from "../../components/Spinner";
 
 export default function Login() {
+  const router = useRouter()
+
+  const [loading, setLoading] = useState(false)
   const [user, setUser] = useState({
     password: "",
     email: "",
@@ -12,11 +19,21 @@ export default function Login() {
 
 
   const onLogin = async () => {
-    console.log(user)
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/users/login", user);
+      toast.success(response.data.message);
+      router.push('/')
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <Container>
+      {loading && <Spinner />}
       <Form>
         <h1>login</h1>
         <hr />
