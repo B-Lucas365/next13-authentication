@@ -1,16 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ValidationTokenAndGetUserId } from "../../../../helpers/tokenValidation";
+import User from "@/models/userModel"
 
 export async function GET(request: NextRequest, response: NextResponse) {
   try {
-    const {searchParams} = new URL(request.nextUrl)
-    console.log(searchParams.get('user'))
+    const userId = await ValidationTokenAndGetUserId(request)
+    const user = await User.findOne({_id: userId}).select("-password")
 
     return NextResponse.json({
       message: "Users get request accessed successfully",
-      data: {
-          name: "john doe",
-          email: "teste@teste"
-      }
+      data: user
     });
 
 

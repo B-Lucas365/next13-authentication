@@ -22,6 +22,10 @@ const Globals = createGlobalStyle`
         display: flex;
         border-bottom: 1px solid #ccc;
         justify-content: space-between;
+
+        .logout { 
+            cursor: pointer;
+        }
     }
     
     .header-content {
