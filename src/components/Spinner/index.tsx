@@ -1,11 +1,19 @@
-import { SpinnerContainer, SpinnerContent } from "./styles"
+import { SpinnerContainer, SpinnerContent } from "./styles";
 
 export const Spinner = () => {
-    return (
-        <SpinnerContainer>
-            <SpinnerContent>
-
-            </SpinnerContent>
-        </SpinnerContainer>
-    )
-}
+  return (
+    <SpinnerContainer>
+      <SpinnerContent>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </SpinnerContent>
+    </SpinnerContainer>
+  );
+};

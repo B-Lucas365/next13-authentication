@@ -1,13 +1,13 @@
 import axios from "axios";
-import {cookies} from "next/headers"  
+import { cookies } from "next/headers";
+import { Container, H1 } from "./styles";
 
 export async function getUser() {
   try {
-    console.log(cookies().get("token"))
     const response = await axios.get("http://localhost:3000/api/users/me", {
       headers: {
-        Cookie: `token=${cookies().get("token")?.value}`
-      }
+        Cookie: `token=${cookies().get("token")?.value}`,
+      },
     });
 
     return response.data.data;
@@ -18,11 +18,10 @@ export async function getUser() {
 
 export default async function Home() {
   const user: any = await getUser();
+
   return (
-    <div>
-      <h1>
-        Welcome, {user?.userName}
-      </h1>
-    </div>
+    <Container>
+      <H1>Welcome back, {user?.userName}</H1>
+    </Container>
   );
 }

@@ -1,59 +1,78 @@
 "use client";
-import Link from "next/link";
+import {ImExit} from 'react-icons/Im'
 import StyledComponentsRegistry from "../../lib/styled-components/registry";
 import { GlobalStyles } from "../../styles/global";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { usePathname, useRouter } from "next/navigation";
-import toast, { Toaster } from "react-hot-toast";
-import { CiLogout } from "react-icons/ci";
-import axios from "axios";
+import { Toaster, toast } from "sonner";
 import { useState } from "react";
 import { Spinner } from "../Spinner";
+import { destroyCookie } from 'nookies';
 
-const inter = Inter({ subsets: ["latin"] });
+import {
+  Ancora,
+  Circle,
+  DivGroup,
+  GroupLinks,
+  H1,
+  Header,
+  Logo,
+  Logout,
+} from "./style";
+
+const roboto = Roboto({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 
 interface ChildrenProps {
   children: React.ReactNode;
 }
 
 export const LayoutProvider = ({ children }: ChildrenProps) => {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
-
-  const onLogout = async () => {
-    try {
-      setLoading(true);
-      await axios.post("/api/users/logout");
-      toast.success("logout sucessfully");
-      router.push("/login");
-    } catch (error) {
-      toast.error("Logout failed");
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  const [isActive, setIsActive] = useState("home");
+  
   const pathname = usePathname();
   const isPublicPage = pathname === "/login" || pathname === "/register";
-
+  
   return (
-    <div className={inter.className}>
+    <div className={roboto.className}>
       <StyledComponentsRegistry>
         <Toaster />
         {loading && <Spinner />}
 
         {!isPublicPage && (
-          <header className="header">
-            <h1>Next Auth</h1>
-            <div className="header-content">
-              <Link href={"/"}>Home</Link>
-              <Link href={"profile"}>Profile</Link>
-            </div>
+          <Header>
+            <DivGroup>
+              <Logo>
+                <Circle /> <H1>Anywhere App</H1>
+              </Logo>
 
-            <div onClick={onLogout} className="logout">
-              <CiLogout size={"30px"} />
-            </div>
-          </header>
+              <GroupLinks>
+                <Ancora
+                  href={"/"}
+                  onClick={() => setIsActive("home")}
+                  isActive={isActive === "home"}
+                >
+                  Home
+                </Ancora>
+                <Ancora
+                  href={"profile"}
+                  onClick={() => setIsActive("profile")}
+                  isActive={isActive === "profile"}
+                >
+                  Profile
+                </Ancora>
+              </GroupLinks>
+            </DivGroup>
+
+            <DivGroup>
+              <Logout>
+                <ImExit/>
+              </Logout>
+            </DivGroup>
+          </Header>
         )}
         {children}
         <GlobalStyles />

@@ -2,6 +2,14 @@
 import { createGlobalStyle } from "styled-components";
 
 const Globals = createGlobalStyle`
+    :root {
+        --text-color:#9C9DA2;
+        --primary-color: #0449E9;
+        --title-color: #EDEDEE;
+        --input-color: #595B63 ;
+
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -9,31 +17,18 @@ const Globals = createGlobalStyle`
     }
 
     body {
-        background: #252525;
-        color: #fff;
+        background: linear-gradient(
+      to right,
+      rgba(39, 42, 55, 0.99),
+      rgba(255, 255, 255, 0.1)
+    ),
+        url("/background.jpg");
+        background-size: cover;
     }
 
     a {
         text-decoration: none;
-        color: #fff;
     }
-
-    .header{
-        display: flex;
-        border-bottom: 1px solid #ccc;
-        justify-content: space-between;
-
-        .logout { 
-            cursor: pointer;
-        }
-    }
-    
-    .header-content {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-    }
-
 
 `;
 

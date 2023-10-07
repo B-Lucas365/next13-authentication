@@ -1,31 +1,58 @@
-'use client'
-import styled from "styled-components"
+"use client";
+import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    height: 100vh; 
-    background-color: #6b7280;
-    justify-content: center;
-    align-items: center;
-    color: #111827;
-`
+  display: flex;
+  height: 100vh;
+  
+  justify-content: center;
+  align-items: center;
+  color: #111827;
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  max-width: 1204px;
+  margin: 0 auto;
+`;
 
 export const Form = styled.div`
-    background-color: #d1d5db;
-    padding: 1rem;
-    border-radius: 5px;
-    width: 28.1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 28.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .group-link {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
-`
+    a {
+      color: var(--primary-color);
+    }
+  }
+`;
 
 export const Button = styled.button`
-    height: 2.5rem;
-    width: 100%;
-    background-color: #111827;
-    color: #fff;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-`
+  height: 4rem;
+  width: 50%;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    filter: brightness(.8);
+  }
+`;
+
+export const P = styled.p`
+  font-size: 14px;
+  color: var(--text-color);
+`;
+export const H1 = styled.h1`
+  font-size: 16;
+  color: var(--title-color);
+`;
