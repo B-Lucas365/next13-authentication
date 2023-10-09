@@ -1,5 +1,8 @@
 # Authentication Next.js 13
 
+![image](https://github.com/B-Lucas365/next13-authentication/assets/82220876/862fbc65-6aac-4626-a04b-ad4e24536866)
+
+
 ## Overview
 
 Authentication Next.js 13 is a project aimed at building a JWT authentication system using Next.js 13, App Router, and the new middleware functionality introduced in Next.js 13. The project also leverages MongoDB as the database and Mongoose for data modeling. The backend is entirely implemented within Next.js, showcasing the power of server-side rendering and API routes. The project utilizes various dependencies for features such as authentication, API calls, and styling.
