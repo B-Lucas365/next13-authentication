@@ -1,22 +1,10 @@
-export interface User {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-    address: {
-      street: string;
-      suite: string;
-      city: string;
-      zipcode: string;
-      geo: {
-        // Preencha os detalhes específicos do tipo geo, se necessário
-      };
-    };
-    phone: string;
-    website: string;
-    company: {
-      name: string;
-      catchPhrase: string;
-      bs: string;
-    };
-  }
+export interface UserTypes {
+  _id: string;
+  userName: string;
+  email: string;
+  password: string;
+  isEmailVerified: boolean;
+  isAdmin: boolean;
+  createdAt: Date;
+  updatedAt: Date; 
+}

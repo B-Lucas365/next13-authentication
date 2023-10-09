@@ -4,6 +4,7 @@ import User from "@/models/userModel"
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import  {cookies}  from 'next/headers'
+import { UserTypes } from '../../../../types/userTypes'
 
 connectDB()
 
@@ -12,7 +13,7 @@ export async function POST(request: NextRequest) {
         const reqBody = await request.json()
 
         //check if user exists
-        const user = await User.findOne({email: reqBody.email})
+        const user: UserTypes | null = await User.findOne({email: reqBody.email})
         if(!user) {
             throw new Error("User does not exists")
         }
@@ -30,7 +31,7 @@ export async function POST(request: NextRequest) {
         //return token
         const dataToEncrypt = {
             _id: user._id,
-            name: user.name,
+            name: user.userName,
             email: user.email
         }
 

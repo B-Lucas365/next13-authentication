@@ -7,7 +7,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
 import { useState } from "react";
 import { Spinner } from "../Spinner";
-import { destroyCookie } from 'nookies';
 
 import {
   Ancora,
@@ -19,6 +18,7 @@ import {
   Logo,
   Logout,
 } from "./style";
+import axios from 'axios';
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -30,11 +30,26 @@ interface ChildrenProps {
 }
 
 export const LayoutProvider = ({ children }: ChildrenProps) => {
+  const router = useRouter()
+
   const [loading, setLoading] = useState(false);
   const [isActive, setIsActive] = useState("home");
   
   const pathname = usePathname();
   const isPublicPage = pathname === "/login" || pathname === "/register";
+  
+  const onLogout = async () => {
+    try{
+      setLoading(true)
+      await axios.post('/api/users/logout')
+      toast.success("Logout Successfully")
+      router.push("/login")
+    } catch(error) {
+      toast.error("Logout Failed")
+    } finally {
+      setLoading(false)
+    }
+  }
   
   return (
     <div className={roboto.className}>
@@ -46,7 +61,7 @@ export const LayoutProvider = ({ children }: ChildrenProps) => {
           <Header>
             <DivGroup>
               <Logo>
-                <Circle /> <H1>Anywhere App</H1>
+                <Circle /><H1>Anywhere App</H1>
               </Logo>
 
               <GroupLinks>
@@ -68,7 +83,7 @@ export const LayoutProvider = ({ children }: ChildrenProps) => {
             </DivGroup>
 
             <DivGroup>
-              <Logout>
+              <Logout onClick={onLogout}>
                 <ImExit/>
               </Logout>
             </DivGroup>
