@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
 import { useState } from "react";
 import { Spinner } from "../Spinner";
+import exit from "@/../public/exit.svg"
 
 import {
   Ancora,
@@ -19,6 +20,7 @@ import {
   Logout,
 } from "./style";
 import axios from 'axios';
+import Image from 'next/image';
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -84,7 +86,7 @@ export const LayoutProvider = ({ children }: ChildrenProps) => {
 
             <DivGroup>
               <Logout onClick={onLogout}>
-                <GiExitDoor/>
+                <Image src={exit} alt=''></Image>
               </Logout>
             </DivGroup>
           </Header>
