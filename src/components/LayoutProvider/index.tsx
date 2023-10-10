@@ -1,5 +1,5 @@
 "use client";
-import {ImExit} from 'react-icons/Im'
+import {GiExitDoor} from 'react-icons/Gi'
 import StyledComponentsRegistry from "../../lib/styled-components/registry";
 import { GlobalStyles } from "../../styles/global";
 import { Roboto } from "next/font/google";
@@ -84,7 +84,7 @@ export const LayoutProvider = ({ children }: ChildrenProps) => {
 
             <DivGroup>
               <Logout onClick={onLogout}>
-                <ImExit/>
+                <GiExitDoor/>
               </Logout>
             </DivGroup>
           </Header>
